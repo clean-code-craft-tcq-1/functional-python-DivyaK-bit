@@ -4,22 +4,23 @@ battery_limit = {
      'roc': {'min': 0,'max': 0.8}
         } 
          
-def report_battery_parameters(Battery_Parameters):
-     parameters_off_limit = []
-     for parameters_name,parameters_value in Battery_Parameters.items() :
-          
-          if (parameters_value < battery_limit[parameters_name]['min']) or (parameters_value > battery_limit[parameters_name]['max']):
-               parameters_off_limit.append(parameters_name)
-               
-     return parameters_off_limit
+def check_attribute_stable(bms_attribute):
+    offLimits = []
+    for bms_name,bms_value in bms_attribute.items() :
+        check_attribute_limit(bms_name,bms_value,offLimits)       
+    return offLimits
+
+def check_attribute_limit(bms_name,bms_value,offLimits):
+     if (bms_value < bms_attribute_limits[bms_name]['min']) or (bms_value > bms_attribute_limits[bms_name]['max']):
+            offLimits.append(bms_name)
 
 def battery_is_ok(battery_Values):
-     result = report_battery_parameters(Battery_Parameters)
-     
-     if len(result) == 0:
-          print('battery working condition are good')
+     bms_vitals = check_attribute_stable(bms_attribute)
+    
+     if len(bms_vitals) == 0:
+          print("battery working condition are good")
       else:
-          print('Battery maybe having some troubles! Please check')
+          print("Battery maybe having some troubles! Please check")
 
 
 if __name__ == '__main__':
