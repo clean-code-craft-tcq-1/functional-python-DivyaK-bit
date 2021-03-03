@@ -23,5 +23,5 @@ def battery_is_ok(battery_Values):
 
 
 if __name__ == '__main__':
-  assert(battery_is_ok({'temperature': 25,'soc': 70, 'roc': 0.7}))
-  assert(battery_is_ok({'temperature': 50,'soc': 85, 'roc': 0}))
+  battery_is_ok({'temperature': 25,'soc': 70, 'roc': 0.7})
+  battery_is_ok({'temperature': 50,'soc': 85, 'roc': 0})
