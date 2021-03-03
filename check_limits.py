@@ -18,7 +18,7 @@ def battery_is_ok(battery_Values):
     battery_parameters = battery_parameters_Check(battery_Values)
     if len(battery_parameters) == 0 :
           print("Battery working conditons are good")
-     else:
+    else:
           print("please check")
 
 
