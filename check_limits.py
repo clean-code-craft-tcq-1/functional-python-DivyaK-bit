@@ -3,23 +3,23 @@ battery_limit = {
      'soc': {'min': 20, 'max': 80},
      'roc': {'min': 0,'max': 0.8}
         } 
-def collect_out_of_range_battery_parameters(parameters_exceeded_limit,parameter_name,parameter_value,parameter_limit):
-     if parameter_value < parameter_limit['min'] or parameter_value > parameter_limit['max']:
-        parameters_exceeded_limit.append(parameter_name)
          
 def report_battery_parameters(Battery_Parameters):
-     parameters_exceeded_limit = []
-     for battery_parameter in Battery_Parameters:
-         collect_out_of_range_battery_parameters(parameters_exceeded_limit,battery_parameter,Battery_Parameters[battery_parameter],limit[battery_parameter])
-     return parameters_exceeded_limit
+     parameters_off_limit = []
+     for parameters_name,parameters_value in Battery_Parameters.items() :
+          
+          if (parameters_value < battery_limit[parameters_name]['min']) or (parameters_value > battery_limit[parameters_name]['max']):
+               parameters_off_limit.append(parameters_name)
+               
+     return parameters_off_limit
 
 def battery_is_ok(battery_Values):
- result = report_battery_parameters(Battery_Parameters)
-
-  if len(result) == 0:
-    print('battery working condition are good')
-   else: 
-    print('Battery maybe having some troubles! Please check')
+     result = report_battery_parameters(Battery_Parameters)
+     
+     if len(result) == 0:
+          print('battery working condition are good')
+      else:
+          print('Battery maybe having some troubles! Please check')
 
 
 if __name__ == '__main__':
