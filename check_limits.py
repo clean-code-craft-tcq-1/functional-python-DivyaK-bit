@@ -15,7 +15,7 @@ def check_attribute_limit(parameter_name,parameter_value,parameter_off_Limits):
             parameter_off_Limits.append(parameter_name)
 
 def battery_is_ok(battery_Values):
-     battery_parameters = battery_parameters_Check(battery_Values)
+    battery_parameters = battery_parameters_Check(battery_Values)
     if len(battery_parameters) == 0 :
           print("Battery working conditons are good")
      else:
