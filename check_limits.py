@@ -7,6 +7,7 @@ def battery_range_parameters(battery_Values,parameter_off_Limit):
   for parameter_name,parameter_value in battery_Values.items() :
      if (parameter_value < battery_limit[parameter_name]['min']) or (parameter_value >battery_limit[parameter_name]['max']):
           parameter_off_Limits.append(parameter_name)
+          return parameter_off_Limits
 
 def battery_is_ok(battery_Values):
   parameter_off_Limit=[]
