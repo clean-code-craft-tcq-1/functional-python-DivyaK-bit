@@ -16,12 +16,10 @@ def report_battery_parameters(Battery_Parameters):
 def battery_is_ok(battery_Values):
  result = report_battery_parameters(Battery_Parameters)
 
-  if len(result)==0 :
+  if len(result) == 0:
     print('battery working condition are good')
-    return true
-  else: 
+   else: 
     print('Battery maybe having some troubles! Please check')
-    return False
 
 
 if __name__ == '__main__':
